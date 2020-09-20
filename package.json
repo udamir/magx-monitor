@@ -1,0 +1,28 @@
+{
+  "name": "magx-monitor",
+  "version": "0.0.2",
+  "description": "Monitoring UI for Magx server",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "patch": "tsc && npm version patch",
+    "major": "tsc && npm version major",
+    "minor": "tsc && npm version minor"
+  },
+  "keywords": [
+    "magx",
+    "monitoring",
+    "mosx"
+  ],
+  "author": "Damir Yusipov",
+  "license": "MIT",
+  "dependencies": {
+    "magx": "^0.3.11"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.20",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.6"
+  }
+}
