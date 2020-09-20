@@ -1,7 +1,7 @@
 {
   "name": "magx-monitor",
   "version": "0.0.2",
-  "description": "Monitoring UI for Magx server",
+  "description": "Monitoring console for Magx server",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
