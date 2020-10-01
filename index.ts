@@ -1,4 +1,4 @@
-import { Server, Client, ErrorCode, Router, Room } from "magx"
+import { Server, Client, ErrorCode, Router, Room, ClientEvent } from "magx"
 
 export const monitor = (server: Server) => {
 
@@ -22,7 +22,7 @@ export const monitor = (server: Server) => {
         return client.error(ErrorCode.RoomNotFound, "Room not found")
       }
 
-      client.on("_joined", async () => {
+      client.on(ClientEvent.joined, async () => {
 
         client.onMessage((type: string, data: any) => {
           switch (type) {
