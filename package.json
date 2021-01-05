@@ -1,6 +1,6 @@
 {
   "name": "magx-monitor",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Monitoring console for Magx server",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,11 +17,11 @@
   "author": "Damir Yusipov",
   "license": "MIT",
   "dependencies": {
-    "magx": "^0.4.0",
+    "magx": "^0.4.3",
     "magx-client": "^0.7.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.20",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
     "typescript": "^3.9.6"

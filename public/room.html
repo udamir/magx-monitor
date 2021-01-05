@@ -114,6 +114,7 @@
   </div>
   <!-- magx client -->
   <script type="text/javascript" src="/magx"></script>
+  <script type="text/javascript" src="/magx/monitor/js"></script>
   <!-- vuejs -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>  
   <!-- vuetifyjs -->
@@ -121,7 +122,7 @@
 
   <script> 
     const { host, port, protocol } = window.document.location
-    var client = new MagX.Client({ address: host.replace(/:.*/, ''), port, secure: protocol === "https:" })
+    var client = new MagX.Client({ address: host.replace(/:.*/, ''), port, secure: protocol === "https:", serializer })
 
     const pathArray = window.location.pathname.split('/')
     const roomId = pathArray[pathArray.length - 1]

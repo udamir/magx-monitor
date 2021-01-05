@@ -1,7 +1,19 @@
-import { Server, Client, ErrorCode, Router, Room, ClientEvent } from "magx"
+import { Server, Client, ErrorCode, Router, Room, IRequestContext, ClientEvent } from "magx"
 
-export const monitor = (server: Server) => {
+export const monitor = (server: Server, params: any = {}) => {
 
+  const authData = params?.secret || "monitor"
+  const serializer = params?.serializer 
+
+  // attach frontend js
+  server.router.get("/magx/monitor/js", async (ctx: IRequestContext) => {
+    ctx.type = "javascript"
+    ctx.attachment = "index.js"
+    ctx.buffer = `
+      const serializer = ${ serializer === "schema" ? "MagX.SchemaSerializer" : '""' }
+      const authData = "${authData}"
+    `
+  })
   // attach frontend
   server.router.get("/magx/monitor/", Router.send(__dirname, "/../public/rooms.html"))
   server.router.get("/magx/monitor/:roomId", Router.send(__dirname, "/../public/room.html"))
@@ -14,7 +26,7 @@ export const monitor = (server: Server) => {
   const manager = server.rooms
 
   manager.onClientConnected = async (client: Client) => {
-    if (client.auth.data === "monitor") {
+    if (client.auth.data === authData) {
       monitorClient = client
       // find client's room
       const room = manager.rooms.get(client.roomId)
@@ -63,7 +75,7 @@ export const monitor = (server: Server) => {
     }
   }
   manager.onClientDisconnected = async (client: Client, code: number) => {
-    if (client.auth.data === "monitor") {
+    if (client.auth.data === authData) {
       // find client's room
       const room = manager.rooms.get(client.roomId)
       if (!room) {
