@@ -151,12 +151,14 @@
                 name: index + (typeof item !== "object" && !Array.isArray(item) ? ": " + item : ""),
                 children: items(path + "/" + index, item)
               }))
-            } else  {
+            } else if (typeof node === "object") {
               return Object.keys(node).map(key => ({
                 id: path + "/" + key,
                 name: key + (typeof node[key] !== "object" && !Array.isArray(node[key]) ? ": " + node[key] : ""),
                 children: items(path + "/" + key, node[key])
               }))
+            } else {
+              return []
             }
           }
           return items("", this.state)

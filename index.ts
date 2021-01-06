@@ -55,7 +55,7 @@ export const monitor = (server: Server, params: any = {}) => {
 
         // start track state changes for client
         if (room.tracker) {
-          room.startTracking(client)
+          room.startTracking(client, { spy: true })
         }
 
         client.status = "connected"

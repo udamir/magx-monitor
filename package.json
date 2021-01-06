@@ -1,6 +1,6 @@
 {
   "name": "magx-monitor",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Monitoring console for Magx server",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

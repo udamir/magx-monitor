@@ -10,7 +10,10 @@ npm install --save magx-monitor
   const server = http.createServer()
   const magx = new Server(server, params)
 
-  monitor(magx)
+  monitor(magx, { 
+    serializer: "schema", // Support schema serializer
+    secret: "monitor" // authentication secret
+  })
 
   const port = process.env.PORT || 3001
   server.listen(port, () => {
